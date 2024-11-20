@@ -1,7 +1,7 @@
 {
   "sharedPath": "C:\\Users\\jocke\\Downloads\\",
   "tools": [
-    {"name": "Java JDK", "path": "OpenJDK21U-jdk_x64_windows_hotspot_21.0.3_9.msi"},
-    {"name": "Something", "path": "more.exe"}
+    {"name": "Java JDK", "path": "OpenJDK21U-jdk_x64_windows_hotspot_21.0.3_9.msi", "image" : "image/path"},
+    {"name": "Something", "path": "more.exe", "image" : "image/path"}
   ]
 }

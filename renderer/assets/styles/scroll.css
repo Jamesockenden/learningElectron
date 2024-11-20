@@ -1,0 +1,2 @@
+/* Add some basic styling */ body, html { margin: 0; padding: 0; height: 100%; overflow-x: hidden; } section { height: 100vh; display: flex; align-items: center; justify-content: center; font-size: 2rem; } /* Parallax background */ .parallax { /* Background image */ background-image: url('../images/scroll.jpg'); /* Create the parallax effect */ height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; } /* Regular content sections */ .content { background: white; color: black; }
+
