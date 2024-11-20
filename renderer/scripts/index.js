@@ -1,32 +1,58 @@
-
-// Notes: listeners setup in main, 'api' exposed in preload, windows loads preload. 
+// Notes: listeners setup in main, 'api' exposed in preload, windows loads preload.
 
 function installTool(tool) {
-    console.log(`Installing ${tool.name}`);
-    window.api.sendLog(`Installing ${tool.name}`); 
-    // Your installation logic here
-  }
+  console.log(`Installing ${tool.name}`);
+  window.api.sendLog(`Installing ${tool.name}`);
+  // Your installation logic here
+}
 
-  window.api.sendLog('Installing tester');
+window.api.sendLog('Installing tester');
 
-  window.api.getConfig().then(config => {
-    if (config && config.tools) {
+window.api.getConfig().then(config => {
+  if (config && config.tools) {
+      const slideshowContainer = document.createElement('div');
+      slideshowContainer.className = 'slideshow-container';
       const toolsDiv = document.getElementById('tools');
-      config.tools.forEach(tool => {
+      toolsDiv.appendChild(slideshowContainer);
 
-        let container = document.createElement('div');
-        container.className = 'tool-container';
+      config.tools.forEach((tool, index) => {
+          let slide = document.createElement('div');
+          slide.className = 'mySlides fade';
 
-        let button = document.createElement('button');
-        button.textContent = `Install ${tool.name}`;
-        button.onclick = () => installTool(tool);
+          let numberText = document.createElement('div');
+          numberText.className = 'numbertext';
+          numberText.textContent = `${index + 1} / ${config.tools.length}`;
 
-        container.appendChild(button);
-        container.appendChild(document.createElement('br'));
-        toolsDiv.appendChild(container);
+          let img = document.createElement('img');
+          img.src = `${tool.image}`;
+          img.style.width = '100%';
+          img.style.height = '100px';
 
+          let text = document.createElement('div');
+          text.className = 'text';
+          text.textContent = `${tool.name}`;
+
+          let button = document.createElement('button'); 
+          button.textContent = `Install ${tool.name}`; 
+          button.onclick = () => installTool(tool);
+
+          slide.appendChild(numberText);
+          slide.appendChild(img);
+          slide.appendChild(text);
+          slide.appendChild(button);
+          slideshowContainer.appendChild(slide);
       });
-    } else {
+
+      const dotsContainer = document.createElement('div');
+      dotsContainer.style.textAlign = 'center';
+      config.tools.forEach(() => {
+          let dot = document.createElement('span');
+          dot.className = 'dot';
+          dotsContainer.appendChild(dot);
+      });
+
+      toolsDiv.appendChild(dotsContainer);
+  } else {
       console.error('Tools not defined in config');
-    }
-  });
+  }
+});
