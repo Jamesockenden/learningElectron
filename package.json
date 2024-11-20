@@ -1,0 +1,20 @@
+{
+  "name": "Tool Manager",
+  "version": "1.0.0",
+  "description": "An Electron app to manage software installations.",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^25.1.0",
+    "winston": "^3.17.0"
+  },
+  "author": "James",
+  "license": "ISC",
+  "build": { 
+    "win": { "icon": "renderer/assets/icon.ico" }, 
+    "mac": { "icon": "renderer/assets/icon.png" }, 
+    "linux": { "icon": "renderer/assets/icon.png" } 
+  }
+}
